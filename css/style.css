@@ -81,7 +81,6 @@ overflow-x: hidden;}
 .navigation {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   top: 0;
   font-size: 2rem; }
   .navigation-box {
@@ -89,6 +88,10 @@ overflow-x: hidden;}
     justify-content: center;
     align-items: center; }
   .navigation-ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+
     list-style: none;
     align-self: center; }
     .navigation-ul li {
