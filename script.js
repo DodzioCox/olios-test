@@ -15,46 +15,40 @@ let searchBar = document.querySelector('.search-bar');
 const backdrop = document.querySelector('.backdrop');
 const searchInputBtn = document.querySelector('.input-btn')
 
-function displayPhotos(){
-    setPhotos();
-    for(let i =0; i < cards.length; i++){
-        cards[i].style.backgroundImage =  photos[i];
-    }
-}
+
 let imageCnt = 0;
-function nextBtn(){
+
+
+const searchBarHandler = () =>{
+    searchBar.classList.toggle("active")
+    backdrop.classList.toggle("active")
+}
+
+let photos = [];
+const setPhotos = () =>{
+    for(let i = 0; i <11;i++){
+        photos.push(`img/${i}.jpg`)
+    }
+    console.log(photos)
+}
+setPhotos();
+
+const nextBtn = () =>{
     for(let i = 0; i < 5; i++){
         if(imageCnt >= 10){
             imageCnt = 0;
         }else{
             imageCnt++;
         }
-        cards[i].style.backgroundImage = photos[imageCnt]
+        cards[i].src = photos[imageCnt]
     }
 }
-
-const searchBarHandler = () =>{
-    toggleBackdrop()
-    toggleSearchBar()
-}
-const toggleSearchBar = () => {
-    searchBar.classList.toggle("active")
-}
-const toggleBackdrop = () =>{
-    backdrop.classList.toggle("active")
-}
-let photos = [];
-const setPhotos = () =>{
-    for(let i = 0; i <11;i++){
-        photos.push(`url("css/img/${i}.jpg")`)
-    }
-    console.log(photos)
-}
-displayPhotos();
 if(typeof(btnNext) != 'undefined' && btnNext != null){
     btnNext.addEventListener('click',nextBtn);
+}
+if(typeof(searchInputBtn) != 'undefined' && searchInputBtn != null){
+    searchInputBtn.addEventListener('click',searchBarHandler)
 }
 
 searchBtn.addEventListener('click',searchBarHandler)
 backdrop.addEventListener('click', searchBarHandler)
-searchInputBtn.addEventListener('click',searchBarHandler)
